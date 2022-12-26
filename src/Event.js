@@ -4,7 +4,7 @@ class Event extends Component {
     render() {
         return (
             <div>
-
+                <button className='showData' id='hideData'>Click</button>
             </div>
         )
         

@@ -1,10 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { shallow } from 'enzyme';
 import Event from '../Event';
 
+
 describe('<Event /> component', () => {
-    test('render information for an event', () => {
+    test('render more event information when button is clicked', () => {
         const EventWrapper = shallow(<Event />);
-        expect(EventWrapper.find(Event)).toHaveLength(1);
-    })
+        expect(EventWrapper.find('.showData')).toHaveLength(1);
+    });
+
+    test('Hide details of event when button is clicked', () => {
+        const EventWrapper = shallow(<Event />);
+        expect(EventWrapper.find('#hideData')).toHaveLength(1);
+    });
 })

@@ -6,7 +6,7 @@ import { extractLocations } from '../Api';
 
 describe('<CitySearch /> component', () => {
     test('render text output', () => {
-        const CitySearchWrapper = shallow(<CitySearch />);
+        const CitySearchWrapper = shallow(<CitySearch locations={locations} updateEvents={() => {}} />);
         expect(CitySearchWrapper.find('.city')).toHaveLength(1);
     });
 

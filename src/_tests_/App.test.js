@@ -5,7 +5,7 @@ import EventList from '../EventList';
 import CitySearch from '../CitySearch';
 import NumberOfEvents from '../NumberOfEvents';
 import { mockData } from '../Mock-Data';
-import { extractLocations } from '../Api';
+import { extractLocations, getEvents } from '../Api';
 
 
 

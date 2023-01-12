@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
@@ -8,9 +8,9 @@ import { extractLocations, getEvents } from './Api';
 
 
 
-function App() {
+class App extends Component {
 
-    state = {
+  state = {
     events: [],
     locations: []
   }
@@ -25,7 +25,7 @@ function App() {
     });
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.mounted = false;
   }
 
@@ -41,14 +41,16 @@ function App() {
     });
   }
 
-  return (
-    <div className="App">
-      <NumberOfEvents />
-      <Event />
-      <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/>
-      <EventList events={this.state.events} />
-    </div>
-  );
+  render() {
+    return (
+      <div className="App" >
+        <NumberOfEvents />
+        <Event />
+        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
+        <EventList events={this.state.events} />
+      </div>
+    );
+  }
 }
 
 

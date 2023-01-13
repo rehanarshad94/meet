@@ -5,6 +5,7 @@ import CitySearch from './CitySearch';
 import Event from './Event';
 import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from './Api';
+import './nprogress.css';
 
 
 
@@ -25,6 +26,8 @@ class App extends Component {
     });
   }
 
+  
+
   componentWillUnmount() {
     this.mounted = false;
   }
@@ -40,6 +43,8 @@ class App extends Component {
       });
     });
   }
+
+  
 
   render() {
     return (

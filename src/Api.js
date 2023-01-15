@@ -17,7 +17,6 @@ const checkToken = async (accessToken) => {
 };
 
 
-export const getEvents = async () => {
   export const getEvents = async () => {
     NProgress.start();
   
@@ -43,7 +42,7 @@ export const getEvents = async () => {
     }
   };
   
-};
+
 
 export const getAccessToken = async () => {
   const accessToken = localStorage.getItem('access_token');

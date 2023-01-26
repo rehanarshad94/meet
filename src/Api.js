@@ -36,7 +36,7 @@ const checkToken = async (accessToken) => {
   
     if (token) {
       removeQuery();
-      const url = 'YOUR_GET_EVENTS_API_ENDPOINT' + '/' + token; // HERE
+      const url = 'https://u460hihs90.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/{access-token}'; // + '/' + token; // HERE
       const result = await axios.get(url);
       if (result.data) {
         var locations = extractLocations(result.data.events);
@@ -47,7 +47,7 @@ const checkToken = async (accessToken) => {
       return result.data.events;
     }
   };
-  
+
 
 
 export const getAccessToken = async () => {
@@ -60,7 +60,7 @@ export const getAccessToken = async () => {
     const code = await searchParams.get("code");
     if (!code) {
       const results = await axios.get(
-        "YOUR_SERVERLESS_GET_AUTH_URL_ENDPOINT" // HERE 
+        "https://u460hihs90.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url" // HERE 
       );
       const { authUrl } = results.data;
       return (window.location.href = authUrl);
@@ -87,7 +87,7 @@ const removeQuery = () => {
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
   const { access_token } = await fetch(
-    'YOUR_GET_ACCESS_TOKEN_ENDPOINT' + '/' + encodeCode // HERE 
+    'https://u460hihs90.execute-api.eu-central-1.amazonaws.com/dev/api/token/{code}' // + '/' + encodeCode // HERE 
   )
     .then((res) => {
       return res.json();
@@ -115,4 +115,22 @@ const getToken = async (code) => {
     return locations;
   };
 
+
+
+
+// ENDPOINTS FROM SLS INFO IN TERMINAL 
   
+/*
+  service: auth-server
+stage: dev
+region: eu-central-1
+stack: auth-server-dev
+endpoints:
+  GET - https://u460hihs90.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url
+  GET - https://u460hihs90.execute-api.eu-central-1.amazonaws.com/dev/api/token/{code}
+  GET - https://u460hihs90.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/{access_token}
+functions:
+  getAuthURL: auth-server-dev-getAuthURL
+  getAccessToken: auth-server-dev-getAccessToken
+  getCalendarEvents: auth-server-dev-getCalendarEvents
+  */

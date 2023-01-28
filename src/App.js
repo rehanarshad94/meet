@@ -7,6 +7,7 @@ import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from './Api';
 import './nprogress.css';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import EventGenre from './EventGenre';
 
 
 
@@ -82,6 +83,9 @@ render() {
         <Event />      
          <h4>Events in each city</h4>
           
+
+          <div className='data-vis-wrapper'>
+         <EventGenre events={this.state.events} />
          <ResponsiveContainer height={400} >
           <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
             <CartesianGrid />
@@ -96,6 +100,7 @@ render() {
             <Scatter data={this.getData()} fill="#8884d8" />
           </ScatterChart>
         </ResponsiveContainer>
+        </div>
         <EventList events={this.state.events} />
       </div>
     );
